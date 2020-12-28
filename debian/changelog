@@ -1,4 +1,4 @@
-joyent-mdata-client (0.0.1-1); urgency=low
+joyent-mdata-client (0.0.1-1) UNRELEASED; urgency=low
 
   * Initial packaging for Joyent repository.
 

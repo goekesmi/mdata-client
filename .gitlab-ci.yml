@@ -1,20 +1,15 @@
-image: debian:buster
-
 stages:
   - build
   - upload
-before_script:
-  - apt-get -y update
-  - apt-get -y upgrade
-  - apt-get -y install build-essential debhelper fakeroot
 
-after_script:
-  - echo "After script section"
-  - echo "For example you might do some cleanup here"
 
 build1:
   stage: build
+  image: debian:buster
   script:
+    - apt-get -y update
+    - apt-get -y upgrade
+    - apt-get -y install build-essential debhelper fakeroot
     - ./debian/rules binary
     - mv ../*.deb .
   artifacts:

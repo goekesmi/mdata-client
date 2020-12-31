@@ -1,5 +1,8 @@
 image: debian:buster
 
+stages:
+  - build
+  - upload
 before_script:
   - apt-get -y update
   - apt-get -y upgrade
@@ -18,3 +21,9 @@ build1:
     paths:
     - ./*.deb
     expire_in: 10 days
+
+
+upload:
+  stage: upload
+  script:
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file joyent-mdata-client_0.0.1-1_amd64.deb "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/mdata-client/0.0.1-1/joyent-mdata-client_0.0.1-1_amd64.deb"'

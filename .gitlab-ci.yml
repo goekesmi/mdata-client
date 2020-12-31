@@ -24,6 +24,7 @@ build1:
 
 
 upload:
+  image: curlimages/curl:latest
   stage: upload
   script:
-    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file joyent-mdata-client_0.0.1-1_amd64.deb "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/mdata-client/0.0.1-1/joyent-mdata-client_0.0.1-1_amd64.deb"'
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file joyent-mdata-client_0.0.1-1_amd64.deb "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/mdata-client/0.0.1/joyent-mdata-client_0.0.1-1_amd64.deb"'

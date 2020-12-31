@@ -1,0 +1,20 @@
+image: debian:buster
+
+before_script:
+  - apt-get -y update
+  - apt-get -y upgrade
+  - apt-get -y install build-essential debhelper fakeroot
+
+after_script:
+  - echo "After script section"
+  - echo "For example you might do some cleanup here"
+
+build1:
+  stage: build
+  script:
+    - ./debian/rules binary
+    - mv ../*.deb .
+  artifacts:
+    paths:
+    - ./*.deb
+    expire_in: 10 days
